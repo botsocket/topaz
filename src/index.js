@@ -43,17 +43,19 @@ internals.Sorter = class {
         const visited = new Set();
         const sorted = [];
 
-        const visit = (node, adjs, predecessors) => {
+        const visit = (node, adjs, predecessors = new Set()) => {
+            if (visited.has(node)) { // Node visited, skip
+                return;
+            }
+
+            predecessors.add(node);
             visited.add(node);
 
             if (adjs) {
                 for (const adj of adjs) {
-                    Assert(!predecessors.has(adj), 'Circular dependency detected. Dependency chain:', [...predecessors, adj].join(' => '));
+                    Assert(!predecessors.has(adj), `Circular dependency detected. Dependency chain: ${[...predecessors, adj].join(' => ')}`);
 
-                    if (!visited.has(adj)) { // Visit the adjacent node if it has not been visited
-                        predecessors.add(node);
-                        visit(adj, this._edges.get(adj), predecessors);
-                    }
+                    visit(adj, this._edges.get(adj), new Set(predecessors));
                 }
             }
 
@@ -61,9 +63,7 @@ internals.Sorter = class {
         };
 
         for (const [node, adjs] of this._edges) {
-            if (!visited.has(node)) { // Visit the node if it has not been visited
-                visit(node, adjs, new Set([node]));
-            }
+            visit(node, adjs);
         }
 
         return sorted;

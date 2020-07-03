@@ -63,7 +63,7 @@ describe('sorter()', () => {
         const sorter = Constellation.sorter();
 
         sorter.add(1, 2).add(2, 3).add(3, 1);
-        expect(() => sorter.sort()).toThrow();
+        expect(() => sorter.sort()).toThrow('Circular dependency detected. Dependency chain: 1 => 2 => 3 => 1');
     });
 });
 
