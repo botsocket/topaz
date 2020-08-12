@@ -49,7 +49,7 @@ internals.Sorter = class {
 
         const visit = (node, adjs, predecessors = new Set()) => {
 
-            if (visited.has(node)) { // Node visited, skip
+            if (visited.has(node)) {                                // Node visited, skip
                 return;
             }
 
