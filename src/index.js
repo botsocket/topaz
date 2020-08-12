@@ -5,15 +5,18 @@ const Assert = require('@botbind/dust/src/assert');
 const internals = {};
 
 exports.sorter = function () {
+
     return new internals.Sorter();
 };
 
 internals.Sorter = class {
     constructor() {
+
         this._edges = new Map();
     }
 
     add(node, ...deps) {
+
         if (deps.length === 1) {
             deps = deps[0];
             if (!Array.isArray(deps)) {
@@ -40,10 +43,12 @@ internals.Sorter = class {
     }
 
     sort() {
+
         const visited = new Set();
         const sorted = [];
 
         const visit = (node, adjs, predecessors = new Set()) => {
+
             if (visited.has(node)) { // Node visited, skip
                 return;
             }

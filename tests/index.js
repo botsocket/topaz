@@ -7,7 +7,9 @@ const Constellation = require('..');
 const internals = {};
 
 describe('sorter()', () => {
+
     it('should add only a node', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add('x').add('y', []);
@@ -15,6 +17,7 @@ describe('sorter()', () => {
     });
 
     it('should add an edge', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add('x', 'y');
@@ -22,6 +25,7 @@ describe('sorter()', () => {
     });
 
     it('should add multiple egdes with a single call passing an array of dependencies ', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add('x', ['y', 'z']).add('z', 'y');
@@ -29,6 +33,7 @@ describe('sorter()', () => {
     });
 
     it('should add multiple egdes with a single call passing dependencies as arguments ', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add('x', 'y', 'z').add('z', 'a', 'y');
@@ -36,6 +41,7 @@ describe('sorter()', () => {
     });
 
     it('should add multiple egdes with multiple calls', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add('x', 'y').add('x', 'z').add('x', ['a', 'b']).add('x', 'c', 'd');
@@ -43,6 +49,7 @@ describe('sorter()', () => {
     });
 
     it('should sort complex sequences', () => {
+
         const sorter = Constellation.sorter();
 
         sorter
@@ -60,6 +67,7 @@ describe('sorter()', () => {
     });
 
     it('should detect circular dependencies', () => {
+
         const sorter = Constellation.sorter();
 
         sorter.add(1, 2).add(2, 3).add(3, 1);
@@ -68,5 +76,6 @@ describe('sorter()', () => {
 });
 
 internals.testSort = function (sorter, expected) {
+
     expect(Dust.equal(sorter.sort(), expected)).toBe(true);
 };
