@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Topaz is a library for [topological sorting](#https://en.wikipedia.org/wiki/Topological_sorting).
+Topaz is a library for [topological sorting](https://en.wikipedia.org/wiki/Topological_sorting).
 
 ## Installation
 
