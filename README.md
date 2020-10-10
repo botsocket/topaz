@@ -9,6 +9,6 @@
 ### Useful links
 
 -   [Documentation and API](https://github.com/botsocket/topaz/blob/master/Documentation.md)
--   [Release notes](https://github.com/botsocket/topaz/releases)
+-   [Releases](https://github.com/botsocket/topaz/releases)
 -   [BotSocket](https://botsocket.com)
 -   [Moonstone](https://github.com/botsocket/moonstone)
