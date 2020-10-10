@@ -1,8 +1,8 @@
 'use strict';
 
-const Dust = require('@botbind/dust');
+const Bone = require('@botsocket/bone');
 
-const Constellation = require('..');
+const Topaz = require('..');
 
 const internals = {};
 
@@ -10,7 +10,7 @@ describe('sorter()', () => {
 
     it('should add only a node', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add('x').add('y', []);
         internals.testSort(sorter, ['x', 'y']);
@@ -18,7 +18,7 @@ describe('sorter()', () => {
 
     it('should add an edge', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add('x', 'y');
         internals.testSort(sorter, ['y', 'x']);
@@ -26,7 +26,7 @@ describe('sorter()', () => {
 
     it('should add multiple egdes with a single call passing an array of dependencies ', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add('x', ['y', 'z']).add('z', 'y');
         internals.testSort(sorter, ['y', 'z', 'x']);
@@ -34,7 +34,7 @@ describe('sorter()', () => {
 
     it('should add multiple egdes with a single call passing dependencies as arguments ', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add('x', 'y', 'z').add('z', 'a', 'y');
         internals.testSort(sorter, ['y', 'a', 'z', 'x']);
@@ -42,7 +42,7 @@ describe('sorter()', () => {
 
     it('should add multiple egdes with multiple calls', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add('x', 'y').add('x', 'z').add('x', ['a', 'b']).add('x', 'c', 'd');
         internals.testSort(sorter, ['y', 'z', 'a', 'b', 'c', 'd', 'x']);
@@ -50,7 +50,7 @@ describe('sorter()', () => {
 
     it('should sort complex sequences', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter
             .add('a', ['b', 'f'])
@@ -68,7 +68,7 @@ describe('sorter()', () => {
 
     it('should detect circular dependencies', () => {
 
-        const sorter = Constellation.sorter();
+        const sorter = Topaz.sorter();
 
         sorter.add(1, 2).add(2, 3).add(3, 1);
         expect(() => sorter.sort()).toThrow('Circular dependency detected. Dependency chain: 1 => 2 => 3 => 1');
@@ -77,5 +77,5 @@ describe('sorter()', () => {
 
 internals.testSort = function (sorter, expected) {
 
-    expect(Dust.equal(sorter.sort(), expected)).toBe(true);
+    expect(Bone.equal(sorter.sort(), expected)).toBe(true);
 };

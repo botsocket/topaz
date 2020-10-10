@@ -2,22 +2,22 @@
 
 ## Introduction
 
-Constellation is a library for [topological sorting](#https://en.wikipedia.org/wiki/Topological_sorting).
+Topaz is a library for [topological sorting](#https://en.wikipedia.org/wiki/Topological_sorting).
 
 ## Installation
 
-Constellation is available on npm:
+Topaz is available on npm:
 
 ```bash
-npm install @botbind/constellation
+npm install @botsocket/topaz
 ```
 
 ## Usage
 
 ```js
-const Constellation = require('@botbind/constellation');
+const Topaz = require('@botsocket/topaz');
 
-const sorter = Constellation.sorter();
+const sorter = Topaz.sorter();
 
 sorter
     .add('a', 'b')
@@ -37,7 +37,7 @@ sorter.sort();  // [ c, b, a ]
 Creates a sorter.
 
 ```js
-const sorter = Constellation.sorter();
+const sorter = Topaz.sorter();
 ```
 
 [Back to top](#api)
@@ -52,7 +52,7 @@ Adds a node and its dependencies where:
 Note that calling the method multiple times with the same node will concatenate its dependencies.
 
 ```js
-const sorter = Constellation.sorter();
+const sorter = Topaz.sorter();
 
 sorter.add('x', 'y'); // Single dependency
 sorter.add('x', ['y', 'z']); // Multiple dependencies
@@ -67,7 +67,7 @@ sorter.add('x'); // No dependencies
 Sorts the given nodes topologically. If a circular dependency is detected, an error will be thrown with the dependency chain for debugging purposes. Note that objects are sorted by their references.
 
 ```js
-const sorter = Constellation.sorter();
+const sorter = Topaz.sorter();
 
 sorter.add('x', 'y');
 sorter.add('y', 'z');

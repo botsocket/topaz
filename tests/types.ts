@@ -1,22 +1,22 @@
-import Constellation = require('../src');
+import Topaz = require('../src');
 
 let strArrType: string[];
 let guard: unknown;
 
 // sorter()
 
-Constellation.sorter();
+Topaz.sorter();
 
 // Sorter.add()
 
-Constellation.sorter<string>().add('x');
-Constellation.sorter<string>().add('x', 'y');
-Constellation.sorter<string>().add('x', ['y', 'z']);
-Constellation.sorter<string>().add('x').add('y');
-Constellation.sorter<string>().add('x', 'y', 'z');
+Topaz.sorter<string>().add('x');
+Topaz.sorter<string>().add('x', 'y');
+Topaz.sorter<string>().add('x', ['y', 'z']);
+Topaz.sorter<string>().add('x').add('y');
+Topaz.sorter<string>().add('x', 'y', 'z');
 
 // Sorter.sort()
 
-Constellation.sorter().sort();
-Constellation.sorter<string>().add('x').add('y').sort();
-strArrType = Constellation.sorter<string>().sort();
+Topaz.sorter().sort();
+Topaz.sorter<string>().add('x').add('y').sort();
+strArrType = Topaz.sorter<string>().sort();
