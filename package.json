@@ -1,6 +1,6 @@
 {
     "name": "@botsocket/topaz",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Topological sorting",
     "main": "src/index.js",
     "types": "src/index.d.ts",
