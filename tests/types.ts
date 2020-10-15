@@ -1,4 +1,4 @@
-import Topaz = require('../src');
+import * as Topaz from '../src';
 
 let strArrType: string[];
 let guard: unknown;
